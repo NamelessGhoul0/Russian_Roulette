@@ -83,7 +83,6 @@ int main(void) {
 			vita2d_pgf_draw_textf(pgf, 100, 160, RED, 1.0f, "YOU ARE DEAD");
 		} else if (game_played_once == 1) {
 			vita2d_pgf_draw_textf(pgf, 100, 160, RED, 1.0f, "You live to see another day. Try again?");
-			gen_bullet_pos();
 		}
 
 		// end render
