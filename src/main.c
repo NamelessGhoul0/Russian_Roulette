@@ -25,6 +25,8 @@
 #include <psp2/kernel/processmgr.h>
 #include <vita2d.h>
 
+#include "audio.h"
+
 #define BLACK   RGBA8(0, 0, 0, 255)
 #define WHITE	RGBA8(255, 255, 255, 255)
 #define RED		RGBA8(255, 0, 0, 255)
@@ -34,6 +36,7 @@
 	- Make Menu
 	- Add sounds and maybe some chill background music
 	- Some animations, blood, etc when the game is over
+	- Fix audio loop
 */
 
 struct {
@@ -61,6 +64,7 @@ int main(void) {
 	vita2d_init();
 	vita2d_set_clear_color(BLACK);
 	pgf = vita2d_load_default_pgf();
+	audio_init();
 
 	gen_bullet_pos();
 
@@ -80,6 +84,7 @@ int main(void) {
 		vita2d_pgf_draw_textf(pgf, 100, 130, WHITE, 1.0f, "barrel_pos = %d", game.barrel_pos);
 
 		if (game.bullet_pos == game.barrel_pos) {
+			play_gunshot();
 			vita2d_pgf_draw_textf(pgf, 100, 160, RED, 1.0f, "YOU ARE DEAD");
 		} else if (game_played_once == 1) {
 			vita2d_pgf_draw_textf(pgf, 100, 160, RED, 1.0f, "You live to see another day. Try again?");

@@ -28,28 +28,7 @@ link_directories(
 
 add_executable(Russian_Roulette
   src/main.c
-  src/Nogg/src/util/memory.c
-  src/Nogg/src/util/float-to-int16.c
-  src/Nogg/src/util/decode-frame.c
-  src/Nogg/src/decode/stb_vorbis.c
-  src/Nogg/src/decode/setup.c
-  src/Nogg/src/decode/seek.c
-  src/Nogg/src/decode/packet.c
-  src/Nogg/src/decode/io.c
-  src/Nogg/src/decode/decode.c
-  src/Nogg/src/decode/crc32.c
-  src/Nogg/src/api/version.c
-  src/Nogg/src/api/seek-tell.c
-  src/Nogg/src/api/read-int16.c
-  src/Nogg/src/api/read-float.c
-  src/Nogg/src/api/open-file.c
-  src/Nogg/src/api/open-callbacks.c
-  src/Nogg/src/api/open-buffer.c
-  src/Nogg/src/api/info.c
-  src/Nogg/src/api/close.c
-  src/Media/WavFile.c
-  src/Media/FileBuffer.c
-  src/Media/Audio.c
+  src/audio.cpp
 )
 
 target_link_libraries(Russian_Roulette
@@ -61,6 +40,8 @@ target_link_libraries(Russian_Roulette
   SceAudio_stub
   ScePgf_stub
   SceCommonDialog_stub
+  soloud
+  pthread
   freetype
   png
   z
